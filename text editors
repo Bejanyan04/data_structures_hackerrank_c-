@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+#include <stack>
+using namespace std;
+
+int main() {
+  string init_str; //initial empty string
+  int num_of_oper; //number of operations
+  stack <string> undo_stk;
+  string input_str;
+  cin>>num_of_oper;
+  while(num_of_oper--){
+    int oper_type;
+    cin>>oper_type;
+    switch(oper_type)
+    {
+      case 1:
+      {
+        cin >> input_str;
+        undo_stk.push(init_str);
+        init_str+= input_str;// elem to be appended
+
+      }
+        break;
+        continue;
+      case 2:
+      {
+        undo_stk.push(init_str);
+        int k;
+        cin>> k; // number of last el to be removed
+        init_str.erase(init_str.length()-k);
+      }
+        break;
+        continue;
+      case 3:
+      {
+        int k;
+        cin>>k;
+        cout<<init_str[k-1]<<endl;;
+      }
+        break;
+      case 4:
+      {
+      init_str=undo_stk.top();
+      undo_stk.pop();
+      }
+      break;
+   }
+ }
+
+
+}
