@@ -68,42 +68,6 @@ class Node {
         return height;
         
     }
-    
-
-
- 
-    /*
-    queue <Node*> queue;
-    queue.push(root);
- 
-    Node* front = nullptr;
-    int height = -1;
- 
-    // loop till queue is empty
-    while (!queue.empty())
-    {
-        int size = queue.size();
-     while (size--)
-        {
-            front = queue.front();
-            queue.pop();
- 
-            if (front->left) {
-                queue.push(front->left);
-            }
- 
-            if (front->right) {
-                queue.push(front->right);
-            }
-        }
- 
-        // increment height by 1 for each level
-        height++;
-    }
- 
-    return height;
-}
-*/
 
 
 }; //End of Solution
@@ -129,4 +93,4 @@ int main() {
 
     return 0;
 }
-
+       
