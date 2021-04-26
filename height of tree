@@ -1,0 +1,132 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Node {
+    public:
+        int data;
+        Node *left;
+        Node *right;
+        Node(int d) {
+            data = d;
+            left = NULL;
+            right = NULL;
+        }
+};
+
+class Solution {
+    public:
+  		Node* insert(Node* root, int data) {
+            if(root == NULL) {
+                return new Node(data);
+            } else {
+                Node* cur;
+                if(data <= root->data) {
+                    cur = insert(root->left, data);
+                    root->left = cur;
+                } else {
+                    cur = insert(root->right, data);
+                    root->right = cur;
+               }
+
+               return root;
+           }
+        }
+/*The tree node has data, left child and right child 
+class Node {
+    int data;
+    Node* left;
+    Node* right;
+};
+
+*/
+    int height(Node* root) {
+        if(root == nullptr) return 0;
+        queue <Node*> Q;
+        int height = -1;
+        Q.push(root);
+        
+        while( !Q.empty() ){
+            int node_count = Q.size();
+            while( node_count) {
+                auto temp = Q.front();
+                Q.pop();
+            
+                if( temp -> left){
+                    Q.push( temp -> left);
+                }
+            
+                if( temp -> right){
+                    Q.push(temp->right);
+                }
+                node_count--;
+            }
+                height ++;
+                
+        
+            }
+        return height;
+        
+    }
+    
+
+
+ 
+    /*
+    queue <Node*> queue;
+    queue.push(root);
+ 
+    Node* front = nullptr;
+    int height = -1;
+ 
+    // loop till queue is empty
+    while (!queue.empty())
+    {
+        int size = queue.size();
+     while (size--)
+        {
+            front = queue.front();
+            queue.pop();
+ 
+            if (front->left) {
+                queue.push(front->left);
+            }
+ 
+            if (front->right) {
+                queue.push(front->right);
+            }
+        }
+ 
+        // increment height by 1 for each level
+        height++;
+    }
+ 
+    return height;
+}
+*/
+
+
+}; //End of Solution
+
+int main() {
+  
+    Solution myTree;
+    Node* root = NULL;
+    
+    int t;
+    int data;
+
+    std::cin >> t;
+
+    while(t-- > 0) {
+        std::cin >> data;
+        root = myTree.insert(root, data);
+    }
+  
+    int height = myTree.height(root);
+    
+  	std::cout << height;
+
+    return 0;
+}
+
